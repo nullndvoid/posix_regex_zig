@@ -11,9 +11,9 @@ pub fn build(b: *std.Build) void {
     });
 
     mod.link_libc = true;
-    mod.addIncludePath(.{ .cwd_relative = "lib" });
+    mod.addIncludePath(b.path("lib"));
     mod.addCSourceFile(.{
-        .file = .{ .cwd_relative = "lib/regez.c" },
+        .file = b.path("lib/regez.c"),
         .flags = &.{
             "-O2", "-std=c23",
         },
